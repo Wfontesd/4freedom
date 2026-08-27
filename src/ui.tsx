@@ -9,6 +9,7 @@ import {
   TextInput,
   View,
   useWindowDimensions,
+  type StyleProp,
   type TextInputProps,
   type ViewStyle,
 } from 'react-native';
@@ -40,7 +41,7 @@ export function ScreenShell({
   scroll = true,
   contentStyle,
   maxWidth = 1180,
-}: PropsWithChildren<{ scroll?: boolean; contentStyle?: ViewStyle | ViewStyle[]; maxWidth?: number }>) {
+}: PropsWithChildren<{ scroll?: boolean; contentStyle?: StyleProp<ViewStyle>; maxWidth?: number }>) {
   const { desktop } = useResponsiveLayout();
   const content = [styles.screenContent, desktop && styles.screenContentDesktop, { maxWidth }, contentStyle];
   return (

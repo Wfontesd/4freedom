@@ -52,7 +52,7 @@ export function HomeScreen({
   const { desktop } = useResponsiveLayout();
   const recommendedIds = getRecommendedJourneyIds(snapshot.profile.needs, snapshot.profile.housingStatus);
   const recommended = recommendedIds.map((id) => journeyById[id]).filter(Boolean);
-  const active = recommended.find((journey) => snapshot.journeyProgress[journey.id]?.status !== 'completed') ?? recommended[0] ?? journeys[0];
+  const active = recommended.find((journey) => snapshot.journeyProgress[journey.id]?.status !== 'completed') ?? recommended[0] ?? journeys[0]!;
   const completedCount = Object.values(snapshot.journeyProgress).filter((progress) => progress?.status === 'completed').length;
   const inProgressCount = Object.values(snapshot.journeyProgress).filter((progress) => progress?.status === 'in-progress').length;
   const readyDocuments = Object.values(snapshot.documentStates).filter((status) => status === 'ready').length;
@@ -743,7 +743,7 @@ const styles = StyleSheet.create({
   documentText: { marginTop: 9, color: colors.muted, fontSize: 12.5, lineHeight: 18 },
   documentOpen: { marginTop: 'auto', paddingTop: 14, color: colors.primary, fontSize: 11.5, fontWeight: '800' },
   modalBackdrop: { flex: 1, backgroundColor: 'rgba(24,19,29,0.52)', alignItems: 'center', justifyContent: 'flex-end' },
-  modalDismiss: { ...StyleSheet.absoluteFillObject },
+  modalDismiss: { position: 'absolute', top: 0, right: 0, bottom: 0, left: 0 },
   modalCard: { width: '100%', maxHeight: '92%', padding: 18, borderTopLeftRadius: 30, borderTopRightRadius: 30, backgroundColor: colors.canvas },
   modalCardDesktop: { width: 760, maxHeight: '88%', marginBottom: 30, borderRadius: 30 },
   profileEditorDesktop: { width: 790, maxHeight: '90%', marginBottom: 25, borderRadius: 30 },

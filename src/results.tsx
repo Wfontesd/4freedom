@@ -1,7 +1,7 @@
 import { Alert, Linking, Pressable, StyleSheet, Text, View } from 'react-native';
 import { buildJourneyResult } from './journeys';
 import { colors } from './data';
-import type { JourneyAnswers, JourneyDefinition } from './types';
+import type { AnswerValue, JourneyAnswers, JourneyDefinition } from './types';
 import {
   InfoCard,
   PrimaryButton,
@@ -90,7 +90,7 @@ export default function JourneyResultScreen({
             {answeredFields.slice(0, desktop ? 12 : 7).map(({ field, value }) => (
               <View key={field.key} style={styles.answerRow}>
                 <Text style={styles.answerLabel}>{field.label}</Text>
-                <Text style={styles.answerValue}>{formatAnswer(value)}</Text>
+                <Text style={styles.answerValue}>{formatAnswer(value as AnswerValue)}</Text>
               </View>
             ))}
             {!answeredFields.length ? <Text style={styles.emptyText}>Aucune réponse enregistrée.</Text> : null}

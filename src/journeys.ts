@@ -1179,7 +1179,7 @@ export function buildJourneyResult(id: JourneyId, answers: Record<string, Answer
   };
   return {
     title: 'Ton contact est préparé',
-    summary: contacts[category] ?? contacts.other,
+    summary: contacts[category] ?? contacts.other ?? 'Annuaire Service-Public pour identifier le service compétent',
     metrics: [
       { label: 'Urgence', value: toStringValue(answers, 'problemUrgency') || 'À préciser' },
       { label: 'Canal préféré', value: toStringValue(answers, 'contactPreference') || 'À préciser' },
