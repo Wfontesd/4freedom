@@ -1,0 +1,23 @@
+name: Source snapshot
+on:
+  push:
+    branches: [tutovie-guided-budget]
+permissions:
+  contents: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tutovie-source
+          path: |
+            app
+            src
+            package.json
+            tsconfig.json
+            app.json
+            IMPLEMENTATION_PLAN.md
+            ARCHITECTURE.md
+          include-hidden-files: true
