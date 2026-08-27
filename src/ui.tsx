@@ -129,12 +129,11 @@ export function Pill({ children, tone = 'purple' }: PropsWithChildren<{ tone?: '
 }
 
 export function ProgressBar({ value, animatedValue }: { value: number; animatedValue?: Animated.Value }) {
-  const width = animatedValue
-    ? animatedValue.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] })
-    : `${Math.max(0, Math.min(1, value)) * 100}%`;
+  const animatedWidth = animatedValue?.interpolate({ inputRange: [0, 1], outputRange: ['0%', '100%'] });
+  const staticWidth = `${Math.max(0, Math.min(1, value)) * 100}%` as `${number}%`;
   return (
     <View style={styles.progressTrack}>
-      <Animated.View style={[styles.progressFill, { width }]} />
+      <Animated.View style={[styles.progressFill, animatedValue ? { width: animatedWidth } : { width: staticWidth }]} />
     </View>
   );
 }
