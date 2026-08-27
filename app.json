@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "TutoVie",
+    "slug": "tutovie",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "scheme": "tutovie",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "plugins": ["expo-router"],
+    "web": {
+      "bundler": "metro",
+      "output": "static",
+      "name": "TutoVie",
+      "shortName": "TutoVie",
+      "themeColor": "#6C4DFF",
+      "backgroundColor": "#F8F6FF"
+    },
+    "experiments": {
+      "typedRoutes": true,
+      "baseUrl": "/tripulse-site/tutovie"
+    },
+    "extra": {
+      "demoMode": true
+    }
+  }
+}
