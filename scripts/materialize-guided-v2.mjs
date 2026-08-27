@@ -5,7 +5,7 @@ import zlib from 'node:zlib';
 const root = process.cwd();
 const partsDir = path.join(root, 'scripts', 'payload');
 const parts = fs.readdirSync(partsDir)
-  .filter((name) => /^part-\d+\.txt$/.test(name))
+  .filter((name) => /^part-\d+(?:-\d+)?\.txt$/.test(name))
   .sort();
 
 const encoded = parts
@@ -22,4 +22,4 @@ for (const [relativePath, content] of Object.entries(files)) {
   fs.writeFileSync(target, content, 'utf8');
 }
 
-console.log(`Materialized ${Object.keys(files).length} guided V2 files.`);
+console.log(`Materialized ${Object.keys(files).length} guided V2 files from ${parts.length} payload chunks.`);
