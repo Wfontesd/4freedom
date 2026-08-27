@@ -2,8 +2,8 @@
   "expo": {
     "name": "TutoVie",
     "slug": "tutovie",
-    "version": "0.1.0",
-    "orientation": "portrait",
+    "version": "0.2.0",
+    "orientation": "default",
     "scheme": "tutovie",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
@@ -13,15 +13,16 @@
       "output": "static",
       "name": "TutoVie",
       "shortName": "TutoVie",
-      "themeColor": "#6C4DFF",
-      "backgroundColor": "#F8F6FF"
+      "themeColor": "#6847F5",
+      "backgroundColor": "#F8F6FC"
     },
     "experiments": {
       "typedRoutes": true,
       "baseUrl": "/tripulse-site/tutovie"
     },
     "extra": {
-      "demoMode": true
+      "demoMode": true,
+      "responsiveDesktop": true
     }
   }
 }

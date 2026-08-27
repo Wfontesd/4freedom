@@ -1,94 +1,73 @@
-# TutoVie
+# TutoVie — maquette guidée mobile et desktop
 
-TutoVie est un assistant mobile-first destiné aux étudiants et jeunes adultes en France. Il transforme une situation personnelle — premier logement, aides, documents, santé, impôts, déménagement — en étapes simples, ordonnées et reliées à des sources officielles.
+TutoVie aide les étudiants et jeunes adultes à comprendre les démarches de la vie autonome en France. Le produit ne se contente pas d’afficher des conseils : chaque sujet ouvre un parcours complet avec questions assistées, option « Je ne sais pas encore », explications contextuelles, récapitulatif et prochaine action officielle.
 
-> **Statut : prototype interactif.** L’onboarding, la roadmap, le coffre documentaire, les détails de démarche et l’assistant sont utilisables. La connexion, l’analyse IA, le scanner, les notifications et le stockage distant sont simulés.
+> **Statut : maquette interactive.** Les calculs locaux, la navigation, les formulaires, les brouillons et les résultats sont fonctionnels. L’authentification, l’IA, les appels aux organismes, les notifications et le stockage de vrais documents restent simulés.
 
-## Démo
+## Interface
 
-- Démo web : `https://wfontesd.github.io/tripulse-site/tutovie/`
-- Les données de la démo restent dans le stockage local du navigateur.
-- Le bouton « Réinitialiser la démo » efface ces données.
+- une interface mobile avec navigation inférieure ;
+- une interface desktop Expo Web avec barre latérale, formulaires en colonnes et panneau d’aide permanent ;
+- les définitions de parcours, les données et les résultats sont partagés entre les plateformes ;
+- `src/app-shell.tsx` contient le shell mobile natif ;
+- `src/app-shell.web.tsx` contient le shell web responsive et desktop.
+
+## Parcours disponibles
+
+1. Calculer son vrai budget logement.
+2. Organiser sa recherche de logement.
+3. Préparer son dossier locatif.
+4. Choisir son garant et vérifier Visale.
+5. Vérifier une annonce et ses signaux d’alerte.
+6. Comprendre son bail avant de signer.
+7. Préparer la remise des clés et l’emménagement.
+8. Préparer sa demande d’aide au logement CAF.
+9. Faire le point sur les aides à vérifier.
+10. Organiser les documents essentiels.
+11. Mettre à jour sa situation administrative de santé.
+12. Préparer sa première déclaration fiscale.
+13. Organiser un déménagement et les changements d’adresse.
+14. Comprendre un courrier administratif.
+15. Identifier qui contacter et préparer la demande.
+
+Chaque parcours comporte trois étapes détaillées et un résultat calculé ou synthétisé localement.
+
+## Fonctionnalités maquettées
+
+- accueil personnalisé et prochaine action recommandée ;
+- authentification par lien magique, Google ou Apple ;
+- onboarding en quatre étapes ;
+- moteur générique de parcours ;
+- sauvegarde locale après chaque réponse ;
+- reprise d’un parcours interrompu ;
+- résultats, alertes, actions suivantes et sources officielles ;
+- assistant d’orientation local ;
+- coffre documentaire et parcours complet d’ajout de document ;
+- modification du profil, réglages de rappels, export et suppression de compte simulés ;
+- aucun niveau, aucun XP, aucune streak et aucune récompense artificielle.
 
 ## Stack
 
 - Expo SDK 57
-- React Native + React Native Web
 - Expo Router
-- TypeScript
-- Animations React Native `Animated`
-- Persistance locale abstraite pour fonctionner sur le web et préparer le passage mobile
+- React Native / React Native Web
+- TypeScript strict
+- export web statique pour GitHub Pages
 
-Le même projet est prévu pour être exporté vers le web puis compilé pour iOS et Android avec Expo/EAS.
-
-## Démarrer en local
+## Lancer le projet
 
 ```bash
 npm install
 npm run web
 ```
 
-Pour vérifier le typage et produire un export web statique :
+Validation et export :
 
 ```bash
 npm run typecheck
 npm run build:web
 ```
 
-L’export est généré dans `dist/`.
+## Limites de sécurité
 
-## Parcours implémentés
-
-- Écran de marque et accueil animé
-- Connexion simulée par e-mail, Google ou Apple
-- Mode démo sans compte
-- Onboarding en quatre étapes : profil, logement, situation, priorités
-- Génération animée de roadmap
-- Tableau de bord et progression gamifiée
-- Roadmap de démarches classées dans le bon ordre
-- Fiches détaillées : pourquoi, quand, pièces, étapes, source officielle
-- Validation d’une démarche et gain d’XP
-- Assistant conversationnel de démonstration
-- Coffre documentaire avec statuts « prêt », « manquant » et « à vérifier »
-- Profil et réinitialisation locale
-- Interface responsive conçue d’abord pour le mobile
-- Prise en charge de la réduction des animations sur le prototype web publié
-
-## Principes produit
-
-1. TutoVie oriente mais ne remplace pas un organisme public ou un professionnel.
-2. Une recommandation importante doit afficher sa source, sa date de vérification et son périmètre.
-3. L’IA ne doit pas inventer une aide, une obligation ou un document.
-4. Le compte n’est pas obligatoire pour découvrir le produit.
-5. Les documents personnels restent facultatifs et soumis à une politique de conservation explicite.
-6. L’interface présente la prochaine action utile plutôt qu’une masse d’informations.
-
-## Organisation du dépôt
-
-```text
-app/
-  _layout.tsx       Navigation racine Expo Router
-  index.tsx         Prototype produit complet
-src/
-  data.ts           Démarches, documents et choix d’onboarding
-  storage.ts        Persistance locale web/native
-  types.ts          Modèles TypeScript
-  ui.tsx            Composants visuels et thème
-.github/workflows/
-  ci.yml            Typage et export web sur GitHub Actions
-IMPLEMENTATION_PLAN.md
-ARCHITECTURE.md
-```
-
-## Limites actuelles
-
-- Aucune authentification réelle
-- Aucun backend
-- Aucune donnée synchronisée entre appareils
-- Réponse de l’assistant statique
-- Ajout de document et scanner simulés
-- Pas de notifications push
-- Contenu limité au premier logement et aux premières démarches d’autonomie
-- Sources non encore administrables depuis un CMS
-
-Consulter `IMPLEMENTATION_PLAN.md` pour le passage du prototype à une bêta réelle.
+TutoVie prépare et oriente, mais ne remplace pas un organisme public, un professionnel du droit, un travailleur social ou un service d’urgence. Une réponse importante devra toujours afficher sa source, sa date de vérification et son degré d’incertitude.
