@@ -1,25 +1,25 @@
 # TutoVie
 
-TutoVie est un assistant mobile-first destiné aux étudiants et jeunes adultes en France. Il transforme une situation personnelle — premier logement, aides, documents, santé, impôts, déménagement — en étapes simples, ordonnées et reliées à des sources officielles.
+TutoVie est un site web responsive destiné aux étudiants et jeunes adultes en France. Il transforme une situation concrète — premier logement, aides, documents, santé, impôts ou déménagement — en parcours guidés, expliqués et sauvegardés.
 
-> **Statut : prototype interactif.** L’onboarding, la roadmap, le coffre documentaire, les détails de démarche et l’assistant sont utilisables. La connexion, l’analyse IA, le scanner, les notifications et le stockage distant sont simulés.
+> **Statut : maquette fonctionnelle.** Les formulaires, calculs locaux, checklists, récapitulatifs, navigation et sauvegarde navigateur sont utilisables. L’authentification, l’IA distante, les appels aux organismes, les notifications et le stockage de fichiers sont simulés.
 
 ## Démo
 
 - Démo web : `https://wfontesd.github.io/tripulse-site/tutovie/`
 - Les données de la démo restent dans le stockage local du navigateur.
-- Le bouton « Réinitialiser la démo » efface ces données.
+- Aucun véritable document ne doit être déposé dans le prototype.
 
 ## Stack
 
 - Expo SDK 57
-- React Native + React Native Web
+- React Native Web
 - Expo Router
 - TypeScript
-- Animations React Native `Animated`
-- Persistance locale abstraite pour fonctionner sur le web et préparer le passage mobile
+- Une base de code web avec deux présentations : mobile et desktop
+- Export statique compatible GitHub Pages
 
-Le même projet est prévu pour être exporté vers le web puis compilé pour iOS et Android avec Expo/EAS.
+Expo est utilisé ici pour produire un site web responsive. Il ne s’agit pas d’une application Windows ou macOS.
 
 ## Démarrer en local
 
@@ -28,7 +28,7 @@ npm install
 npm run web
 ```
 
-Pour vérifier le typage et produire un export web statique :
+Vérifier le projet et produire l’export statique :
 
 ```bash
 npm run typecheck
@@ -37,58 +37,58 @@ npm run build:web
 
 L’export est généré dans `dist/`.
 
-## Parcours implémentés
+## Expérience implémentée
 
-- Écran de marque et accueil animé
-- Connexion simulée par e-mail, Google ou Apple
-- Mode démo sans compte
-- Onboarding en quatre étapes : profil, logement, situation, priorités
-- Génération animée de roadmap
-- Tableau de bord et progression gamifiée
-- Roadmap de démarches classées dans le bon ordre
-- Fiches détaillées : pourquoi, quand, pièces, étapes, source officielle
-- Validation d’une démarche et gain d’XP
-- Assistant conversationnel de démonstration
-- Coffre documentaire avec statuts « prêt », « manquant » et « à vérifier »
-- Profil et réinitialisation locale
-- Interface responsive conçue d’abord pour le mobile
-- Prise en charge de la réduction des animations sur le prototype web publié
+- accueil responsive mobile/desktop ;
+- connexion simulée par e-mail, Google, Apple ou mode sans compte ;
+- onboarding expliquant pourquoi chaque information est demandée ;
+- tableau de bord sans niveaux, XP ni mécanisme de gamification ;
+- moteur de parcours générique avec reprise automatique ;
+- aide contextuelle visible pendant toute la saisie ;
+- option « Je ne sais pas » sur les questions ;
+- calculateur détaillé du vrai budget logement ;
+- formulaires, choix multiples, checklists, faux dépôts et liens officiels ;
+- récapitulatifs séparant les réponses connues des éléments à compléter ;
+- inventaire documentaire avec statuts et explications ;
+- assistant d’orientation vers le bon parcours ;
+- persistance locale versionnée.
+
+## Parcours disponibles
+
+1. Premier logement : projet, budget, garant, dossier, recherche, annonce, visite, bail, installation et CAF.
+2. Aides et droits : situation, ressources, simulation officielle, pistes et suivi.
+3. Documents essentiels : identité, études, banque, logement, santé, impôts et rangement.
+4. Santé administrative : Ameli, carte Vitale, médecin, mutuelle et contacts.
+5. Premiers impôts : foyer fiscal, numéro fiscal, revenus, déclaration et archivage.
+6. Déménagement : dates, préavis, contrats, adresse, sortie et arrivée.
+7. Qui contacter : sujet, contexte, preuves, canal, message et suivi.
 
 ## Principes produit
 
-1. TutoVie oriente mais ne remplace pas un organisme public ou un professionnel.
-2. Une recommandation importante doit afficher sa source, sa date de vérification et son périmètre.
-3. L’IA ne doit pas inventer une aide, une obligation ou un document.
-4. Le compte n’est pas obligatoire pour découvrir le produit.
-5. Les documents personnels restent facultatifs et soumis à une politique de conservation explicite.
-6. L’interface présente la prochaine action utile plutôt qu’une masse d’informations.
+1. L’utilisateur est guidé en permanence et peut continuer même lorsqu’il ne connaît pas une réponse.
+2. TutoVie prépare et suit les démarches sans se substituer aux organismes publics.
+3. Une aide, une règle ou une obligation doit être confirmée par une source officielle à jour.
+4. Les données sensibles ne doivent pas être demandées sans nécessité.
+5. Les documents réels devront être chiffrés, supprimables et soumis à une durée de conservation explicite.
+6. L’interface desktop n’est pas un simple mobile étiré : elle utilise une navigation latérale, un contenu central et une aide permanente.
 
-## Organisation du dépôt
+## Organisation
 
 ```text
-app/
-  _layout.tsx       Navigation racine Expo Router
-  index.tsx         Prototype produit complet
-src/
-  data.ts           Démarches, documents et choix d’onboarding
-  storage.ts        Persistance locale web/native
-  types.ts          Modèles TypeScript
-  ui.tsx            Composants visuels et thème
-.github/workflows/
-  ci.yml            Typage et export web sur GitHub Actions
-IMPLEMENTATION_PLAN.md
-ARCHITECTURE.md
+app/index.tsx       Application et moteur de parcours
+src/data.ts         Parcours, documents et textes d’aide
+src/storage.ts      Sauvegarde locale et migration du prototype
+src/types.ts        Modèles TypeScript
+src/ui.tsx          Composants et navigation responsive
 ```
 
 ## Limites actuelles
 
-- Aucune authentification réelle
-- Aucun backend
-- Aucune donnée synchronisée entre appareils
-- Réponse de l’assistant statique
-- Ajout de document et scanner simulés
-- Pas de notifications push
-- Contenu limité au premier logement et aux premières démarches d’autonomie
-- Sources non encore administrables depuis un CMS
-
-Consulter `IMPLEMENTATION_PLAN.md` pour le passage du prototype à une bêta réelle.
+- aucune authentification réelle ;
+- aucun backend ;
+- aucune synchronisation entre appareils ;
+- aucun téléversement réel ;
+- aucune analyse IA distante ;
+- aucune notification ;
+- aucune démarche envoyée automatiquement ;
+- sources non administrables depuis un CMS.
